@@ -4,12 +4,17 @@ import axios from 'axios';
 class App extends Component {
   state = {
     clickCount: 0,
+    username: '',
+    usernameIsEditable: false
   }
 
   componentDidMount() {
     this.getCount();
   }
 
+
+  // Adding a click means adding to the number that lives on the server
+  // We'll POST here
   handleClick = () => {
     axios.post('/add-click')
       .then(() => this.getCount())
@@ -18,6 +23,9 @@ class App extends Component {
       });
   }
 
+  
+  // Our actual count lives on the server in a session. 
+  // We need to GET that count
   getCount = () => {
     axios.get('/get-clicks')
       .then(response => {
