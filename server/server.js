@@ -6,6 +6,8 @@ const app = express();
 
 app.use(bodyParser.json());
  
+// Session setup
+// Makes req.session a thing
 app.use(cookieSession({
   name: 'session',
   keys: ['session'],
@@ -15,6 +17,8 @@ app.use(cookieSession({
 }));
 
 app.post('/add-click', (req,res) => {
+  // This is defensive code
+  // It is checking req.session.totalClicks to see if it exists. If so, use that number. If not, start at 0
   req.session.totalClicks = req.session.totalClicks || 0;
   req.session.totalClicks += 1;
   res.sendStatus(200);
