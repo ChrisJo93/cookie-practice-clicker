@@ -86,6 +86,7 @@ class App extends Component {
       <div>
         <center>
           <h1>Click the Cookie!!</h1>
+
           <p>
             {this.state.username}
             {/* The next block of code is conditional rendering.

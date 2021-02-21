@@ -23,6 +23,7 @@ app.post('/add-click', (req, res) => {
   // It is checking req.session.totalClicks to see if it exists. If so, use that number. If not, start at 0
   req.session.totalClicks = req.session.totalClicks || 0;
   req.session.totalClicks += 1;
+
   res.sendStatus(200);
 });
 
